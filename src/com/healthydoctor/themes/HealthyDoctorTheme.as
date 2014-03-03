@@ -96,17 +96,11 @@ package com.healthydoctor.themes
 		[Embed(source="/assets/images/metalworks.xml",mimeType="application/octet-stream")]
 		protected static const ATLAS_XML:Class;
 		
-		[Embed(source="/assets/images/ui/ui.png")]
-		protected static const ATLAS_IMAGE2:Class;
-		
-		[Embed(source="/assets/images/ui/ui.xml",mimeType="application/octet-stream")]
-		protected static const ATLAS_XML2:Class;
-		
-		[Embed(source="/assets/fonts/SourceSansPro-Regular.ttf",fontName="SourceSansPro",mimeType="application/x-font",embedAsCFF="false")]
-		protected static const SOURCE_SANS_PRO_REGULAR:Class;
-		
-		[Embed(source="/assets/fonts/SourceSansPro-Semibold.ttf",fontName="SourceSansProSemibold",fontWeight="bold",mimeType="application/x-font",embedAsCFF="false")]
-		protected static const SOURCE_SANS_PRO_SEMIBOLD:Class;
+//		[Embed(source="/assets/fonts/SourceSansPro-Regular.ttf",fontName="SourceSansPro",mimeType="application/x-font",embedAsCFF="false")]
+//		protected static const SOURCE_SANS_PRO_REGULAR:Class;
+//		
+//		[Embed(source="/assets/fonts/SourceSansPro-Semibold.ttf",fontName="SourceSansProSemibold",fontWeight="bold",mimeType="application/x-font",embedAsCFF="false")]
+//		protected static const SOURCE_SANS_PRO_SEMIBOLD:Class;
 		
 		protected static const PRIMARY_BACKGROUND_COLOR:uint = 0x4a4137;
 		protected static const LIGHT_TEXT_COLOR:uint = 0xe5e5e5;
@@ -368,8 +362,8 @@ package com.healthydoctor.themes
 			Callout.stagePaddingTop = Callout.stagePaddingRight = Callout.stagePaddingBottom =
 				Callout.stagePaddingLeft = 16 * this.scale;
 			
-			const atlasBitmapData2:BitmapData = (new ATLAS_IMAGE2()).bitmapData;
-			this.atlas2 = new TextureAtlas(Texture.fromBitmapData(atlasBitmapData2, false), XML(new ATLAS_XML2()));
+//			const atlasBitmapData2:BitmapData = (new ATLAS_IMAGE2()).bitmapData;
+//			this.atlas2 = new TextureAtlas(Texture.fromBitmapData(atlasBitmapData2, false), XML(new ATLAS_XML2()));
 			if(Starling.handleLostContext)
 			{
 				this.atlasBitmapData2 = atlasBitmapData2;
@@ -1446,5 +1440,3 @@ package com.healthydoctor.themes
 		
 	}
 }
-import com.wow.themes;
-

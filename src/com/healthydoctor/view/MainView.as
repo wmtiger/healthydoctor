@@ -3,6 +3,7 @@ package com.healthydoctor.view
 	
 	import com.healthydoctor.setting.Setting;
 	import com.healthydoctor.themes.HealthyDoctorTheme;
+	import com.healthydoctor.view.home.HomeScreen;
 	import com.healthydoctor.view.login.LoginScreen;
 	import com.healthydoctor.view.manhome.ManHomeScreen;
 	import com.healthydoctor.view.newface.NewFaceScreen;
@@ -42,7 +43,7 @@ package com.healthydoctor.view
 			
 			this._navigator.addScreen(Setting.NEW_FACE, new ScreenNavigatorItem(NewFaceScreen, Setting.NEW_FACE_EVENTS));
 			
-			this._navigator.addScreen(Setting.HOME, new ScreenNavigatorItem(NewFaceScreen, Setting.HOME_EVENTS));
+			this._navigator.addScreen(Setting.HOME, new ScreenNavigatorItem(HomeScreen, Setting.HOME_EVENTS));
 			
 			this._navigator.addScreen(Setting.MAN_HOME, new ScreenNavigatorItem(ManHomeScreen, Setting.MAN_HOME_EVENTS));
 			
@@ -51,6 +52,7 @@ package com.healthydoctor.view
 //			const idx:Object = {};
 //			this._navigator.addScreen(Setting.CARD_MGR, new ScreenNavigatorItem(CardsMgrScreen, Setting.CARD_MGR_EVENTS, {selectedCardGroup:idx}));
 			
+//			this._navigator.showScreen(Setting.LOGIN);
 			this._navigator.showScreen(Setting.NEW_FACE);
 		}
 	}

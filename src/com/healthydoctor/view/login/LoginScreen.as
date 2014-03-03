@@ -52,7 +52,7 @@ package com.healthydoctor.view.login
 			this.addChild(this._inputPwd);
 			
 			this._normalButton = new Button();
-			this._normalButton.label = "Login";
+			this._normalButton.label = "登陆";
 			this._normalButton.addEventListener(Event.TRIGGERED, normalButton_triggeredHandler);
 			this.addChild(this._normalButton);
 			

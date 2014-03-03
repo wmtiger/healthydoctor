@@ -37,16 +37,17 @@ package com.healthydoctor.setting
 			};
 		public static const NEW_FACE_EVENTS:Object =
 			{
-				SHOW_HOME: HOME
+				showLogin: LOGIN,
+				showHome: HOME
 			};
 		public static const HOME_EVENTS:Object =
 			{
-				SHOW_MAN_HOME: MAN_HOME,
-				SHOW_WOMAN_HOME: WOMAN_HOME,
-				SHOW_SEARCH_HOSPITAL: SEARCH_HOSPITAL,
-				SHOW_SEARCH_DRUGS: SEARCH_DRUGS,
-				SHOW_EXAMINATION: EXAMINATION,
-				SHOW_TOOLS: TOOLS
+				showManHome: MAN_HOME,
+				showWomanHome: WOMAN_HOME,
+				showSearchHospital: SEARCH_HOSPITAL,
+				showSearchDrugs: SEARCH_DRUGS,
+				showExamination: EXAMINATION,
+				showTools: TOOLS
 			};
 		public static const MAN_HOME_EVENTS:Object =
 			{
