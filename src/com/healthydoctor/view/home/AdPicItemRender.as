@@ -34,7 +34,6 @@ package com.healthydoctor.view.home
 		{
 			if(data)
 			{
-				trace(data.source);
 				_img.source = data.source;
 			}
 		}
