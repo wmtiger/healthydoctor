@@ -37,7 +37,10 @@ package com.healthydoctor.view.home
 		{
 			_searchText = new SearchTextField();
 			addChild(_searchText);
-			_searchText.x = 280;
+			
+			_searchText.validate();
+			_searchText.x = _typeList.x + _typeList.width + 10;
+			_searchText.y = 60 - _searchText.height >> 1;
 		}
 		
 		private function createTypeList():void
@@ -52,7 +55,6 @@ package com.healthydoctor.view.home
 			listLayoutData.verticalCenter = 0;
 			this._typeList.layoutData = listLayoutData;
 			this.addChild(this._typeList);
-			_typeList.x = 140;
 			
 			this._typeList.typicalItem = { text: "医院" };
 			this._typeList.labelField = "text";
@@ -69,6 +71,10 @@ package com.healthydoctor.view.home
 				};
 				return list;
 			};
+			
+			_typeList.validate();
+			_typeList.x = _cityList.x + _cityList.width + 10;
+			_typeList.y = 60 - _typeList.height >> 1;
 		}
 		
 		private function createCityList():void
@@ -99,6 +105,11 @@ package com.healthydoctor.view.home
 				};
 				return list;
 			};
+			
+			_cityList.validate();
+			_cityList.x = 10;
+			_cityList.y = 60 - _cityList.height >> 1;
+			
 		}
 		
 	}

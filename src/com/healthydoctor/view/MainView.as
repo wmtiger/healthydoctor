@@ -53,7 +53,8 @@ package com.healthydoctor.view
 //			this._navigator.addScreen(Setting.CARD_MGR, new ScreenNavigatorItem(CardsMgrScreen, Setting.CARD_MGR_EVENTS, {selectedCardGroup:idx}));
 			
 //			this._navigator.showScreen(Setting.LOGIN);
-			this._navigator.showScreen(Setting.NEW_FACE);
+			this._navigator.showScreen(Setting.HOME);
+//			this._navigator.showScreen(Setting.NEW_FACE);
 		}
 	}
 }

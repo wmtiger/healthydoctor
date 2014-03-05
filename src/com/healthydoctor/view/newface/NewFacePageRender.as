@@ -34,6 +34,7 @@ package com.healthydoctor.view.newface
 				_btn.label = "" + data.cbLabel;
 				_btn.addEventListener(Event.TRIGGERED, click_cb);
 				this.addChild(_btn);
+				_btn.validate();
 				_btn.x = stage.stageWidth - _btn.width >> 1;
 				_btn.y = stage.stageHeight - 100;
 			}
