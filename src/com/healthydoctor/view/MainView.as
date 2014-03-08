@@ -3,10 +3,14 @@ package com.healthydoctor.view
 	
 	import com.healthydoctor.setting.Setting;
 	import com.healthydoctor.themes.HealthyDoctorTheme;
+	import com.healthydoctor.view.exam.ExaminationScreen;
 	import com.healthydoctor.view.home.HomeScreen;
 	import com.healthydoctor.view.login.LoginScreen;
 	import com.healthydoctor.view.manhome.ManHomeScreen;
 	import com.healthydoctor.view.newface.NewFaceScreen;
+	import com.healthydoctor.view.searchdrugs.SearchDrugScreen;
+	import com.healthydoctor.view.searchhospital.SearchHospitalScreen;
+	import com.healthydoctor.view.tools.ToolScreen;
 	import com.healthydoctor.view.womanhome.WomanHomeScreen;
 	
 	import feathers.controls.Drawers;
@@ -48,6 +52,14 @@ package com.healthydoctor.view
 			this._navigator.addScreen(Setting.MAN_HOME, new ScreenNavigatorItem(ManHomeScreen, Setting.MAN_HOME_EVENTS));
 			
 			this._navigator.addScreen(Setting.WOMAN_HOME, new ScreenNavigatorItem(WomanHomeScreen, Setting.WOMAN_HOME_EVENTS));
+			
+			this._navigator.addScreen(Setting.SEARCH_HOSPITAL, new ScreenNavigatorItem(SearchHospitalScreen, Setting.SEARCH_HOSPITAL_EVENTS));
+			
+			this._navigator.addScreen(Setting.SEARCH_DRUGS, new ScreenNavigatorItem(SearchDrugScreen, Setting.SEARCH_DRUGS_EVENTS));
+			
+			this._navigator.addScreen(Setting.EXAMINATION, new ScreenNavigatorItem(ExaminationScreen, Setting.EXAMINATION_EVENTS));
+			
+			this._navigator.addScreen(Setting.TOOLS, new ScreenNavigatorItem(ToolScreen, Setting.TOOLS_EVENTS));
 			
 //			const idx:Object = {};
 //			this._navigator.addScreen(Setting.CARD_MGR, new ScreenNavigatorItem(CardsMgrScreen, Setting.CARD_MGR_EVENTS, {selectedCardGroup:idx}));

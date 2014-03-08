@@ -1,4 +1,4 @@
-package com.healthydoctor.view.home
+package com.healthydoctor.view.home.homepage
 {
 	import ext.wm.feathers.IRenderClickHandler;
 	import ext.wm.feathers.WmListItemRender;

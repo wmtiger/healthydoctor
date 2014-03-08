@@ -51,34 +51,27 @@ package com.healthydoctor.setting
 			};
 		public static const MAN_HOME_EVENTS:Object =
 			{
-//				showCardMgr: CARD_MGR,
-//				showBattleField: BATTLE_FIELD
+				showHome: HOME
 			};
 		public static const WOMAN_HOME_EVENTS:Object =
 			{
-//				showCardMgr: CARD_MGR,
-//				showFriend: FRIEND,
-//				showBattleField: BATTLE_FIELD
+				showHome: HOME
 			};
 		public static const SEARCH_HOSPITAL_EVENTS:Object =
 			{
-//				showUser: USER,
-//				showOneFriend: ONE_FRIEND
+				showHome: HOME
 			};
-		public static const SHOW_SEARCH_DRUGS_EVENTS:Object =
+		public static const SEARCH_DRUGS_EVENTS:Object =
 			{
-//				showFriend: FRIEND,
-//				showBattleField: BATTLE_FIELD
+				showHome: HOME
 			};
 		public static const EXAMINATION_EVENTS:Object =
 			{
-//				showBattleField: BATTLE_FIELD,
-//				showCardMgr: CARD_MGR
+				showHome: HOME
 			};
 		public static const TOOLS_EVENTS:Object =
 			{
-//				showBattleField: BATTLE_FIELD,
-//				showCardMgr: CARD_MGR
+				showHome: HOME
 			};
 		
 		public function Setting()

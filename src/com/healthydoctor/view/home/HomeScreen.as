@@ -1,26 +1,27 @@
 package com.healthydoctor.view.home
 {
+	import com.healthydoctor.setting.Setting;
+	import com.healthydoctor.view.home.homepage.HomePageView;
+	import com.healthydoctor.view.home.morepage.MorePageView;
+	import com.healthydoctor.view.home.nearpage.NearPageView;
+	import com.healthydoctor.view.home.userpage.UserPageView;
+	
 	import ext.wm.feathers.WmPanelScreen;
 	
-	import feathers.controls.Button;
+	import feathers.controls.TabBar;
+	import feathers.data.ListCollection;
 	import feathers.layout.AnchorLayout;
+	import feathers.layout.AnchorLayoutData;
 	
-	import starling.display.DisplayObjectContainer;
 	import starling.events.Event;
 	
 	public class HomeScreen extends WmPanelScreen implements IHomeScreen
 	{
-		private var _searchBar:SearchBar;
-		private var _adPic:AdPicBar;
-		
-		private var _manBtn:Button;
-		private var _womanBtn:Button;
-		private var _searchHospitalBtn:Button;
-		private var _askDrugsBtn:Button;
-		private var _examinationBtn:Button;
-		private var _toolsBtn:Button;
-		
-		private var _homeMenuBar:HomeMenuBar;
+		private var _tabBar:TabBar;
+		private var _homePageView:HomePageView;
+		private var _nearPageView:NearPageView;
+		private var _userPageView:UserPageView;
+		private var _morePageView:MorePageView;
 		
 		public function HomeScreen()
 		{
@@ -31,107 +32,137 @@ package com.healthydoctor.view.home
 		{
 			this.layout = new AnchorLayout();
 			
-			_searchBar = new SearchBar();
-			addChild(_searchBar);
+			this._tabBar = new TabBar();
+			this._tabBar.dataProvider = new ListCollection(
+				[
+					{ label: "首页" },
+					{ label: "附近" },
+					{ label: "个人中心" },
+					{ label: "更多" }
+				]);
+			this._tabBar.addEventListener(Event.CHANGE, tabBar_changeHandler);
+			this._tabBar.layoutData = new AnchorLayoutData(NaN, 0, 0, 0);
+			this.addChild(this._tabBar);
 			
-			_adPic = new AdPicBar(stage.stageWidth,200);
-			addChild(_adPic);
-			_adPic.y = 60;
-			
-			_manBtn = new Button();
-			_manBtn.label = "男神";
-			_manBtn.addEventListener(Event.TRIGGERED, manButton_triggeredHandler);
-			this.addChild(_manBtn);
-			_manBtn.x = 50;
-			_manBtn.y = 320;
-			_manBtn.width = 100;
-			_manBtn.height = 100;
-			
-			_womanBtn = new Button();
-			_womanBtn.label = "女神";
-			_womanBtn.addEventListener(Event.TRIGGERED, womanButton_triggeredHandler);
-			this.addChild(_womanBtn);
-			_womanBtn.width = 100;
-			_womanBtn.height = 100;
-			_womanBtn.validate();
-			_womanBtn.x = stage.stageWidth - _womanBtn.width - 50;
-			_womanBtn.y = 320;
-
-			_searchHospitalBtn = new Button();
-			_searchHospitalBtn.label = "寻医";
-			_searchHospitalBtn.addEventListener(Event.TRIGGERED, searchHospitalHandler);
-			this.addChild(_searchHospitalBtn);
-			_searchHospitalBtn.width = 80;
-			_searchHospitalBtn.validate();
-			_searchHospitalBtn.x = 20;
-			_searchHospitalBtn.y = 480;
-
-			_askDrugsBtn = new Button();
-			_askDrugsBtn.label = "问药";
-			_askDrugsBtn.addEventListener(Event.TRIGGERED, askDrugsHandler);
-			this.addChild(_askDrugsBtn);
-			_askDrugsBtn.width = 80;
-			_askDrugsBtn.validate();
-			_askDrugsBtn.x = _searchHospitalBtn.x + _searchHospitalBtn.width + 20;
-			_askDrugsBtn.y = 480;
-
-			_examinationBtn = new Button();
-			_examinationBtn.label = "体检";
-			_examinationBtn.addEventListener(Event.TRIGGERED, examinationHandler);
-			this.addChild(_examinationBtn);
-			_examinationBtn.width = 80;
-			_examinationBtn.validate();
-			_examinationBtn.x = _askDrugsBtn.x + _askDrugsBtn.width + 20;
-			_examinationBtn.y = 480;
-
-			_toolsBtn = new Button();
-			_toolsBtn.label = "工具";
-			_toolsBtn.addEventListener(Event.TRIGGERED, toolsHandler);
-			this.addChild(_toolsBtn);
-			_toolsBtn.width = 80;
-			_toolsBtn.validate();
-			_toolsBtn.x = _examinationBtn.x + _examinationBtn.width + 20;
-			_toolsBtn.y = 480;
-			
-			_homeMenuBar = new HomeMenuBar();
-			addChild(_homeMenuBar);
-			_homeMenuBar.validate();
-			_homeMenuBar.y = stage.stageHeight - _homeMenuBar.height;
+			_tabBar.selectedIndex = 0;
+			showHomePageView();
 		}
 		
-		private function manButton_triggeredHandler():void
+		protected function showHomePageView():void
 		{
+			if(_homePageView == null)
+			{
+				_homePageView = new HomePageView(this);
+				addChild(_homePageView);
+			}
+			_homePageView.visible = true;
+			if(_nearPageView)
+				_nearPageView.visible = false;
+			if(_userPageView)
+				_userPageView.visible = false;
+			if(_morePageView)
+				_morePageView.visible = false;
+		}
+		
+		protected function showNearPageView():void
+		{
+			if(_nearPageView == null)
+			{
+				_nearPageView = new NearPageView();
+				addChild(_nearPageView);
+			}
+			_nearPageView.visible = true;
+			if(_homePageView)
+				_homePageView.visible = false;
+			if(_userPageView)
+				_userPageView.visible = false;
+			if(_morePageView)
+				_morePageView.visible = false;
+		}
+		
+		protected function showUserPageView():void
+		{
+			if(_userPageView == null)
+			{
+				_userPageView = new UserPageView();
+				addChild(_userPageView);
+			}
+			_userPageView.visible = true;
+			if(_homePageView)
+				_homePageView.visible = false;
+			if(_nearPageView)
+				_nearPageView.visible = false;
+			if(_morePageView)
+				_morePageView.visible = false;
+		}
+		
+		protected function showMorePageView():void
+		{
+			if(_morePageView == null)
+			{
+				_morePageView = new MorePageView();
+				addChild(_morePageView);
+			}
+			_morePageView.visible = true;
+			if(_homePageView)
+				_homePageView.visible = false;
+			if(_nearPageView)
+				_nearPageView.visible = false;
+			if(_userPageView)
+				_userPageView.visible = false;
+		}
+		
+		private function tabBar_changeHandler(event:Event):void
+		{
+//			this._label.text = "selectedIndex: " + this._tabBar.selectedIndex.toString();
+			if(this._tabBar.selectedIndex == 0)
+			{
+				showHomePageView();
+			}
+			else if(this._tabBar.selectedIndex == 1)
+			{
+				showNearPageView();
+			}
+			else if(this._tabBar.selectedIndex == 2)
+			{
+				showUserPageView();
+			}
+			else if(this._tabBar.selectedIndex == 3)
+			{
+				showMorePageView();
+			}
 			
 		}
 		
-		private function womanButton_triggeredHandler():void
+		public function showManScreen():void
 		{
-			
+			this.dispatchEventWith(Setting.SHOW_MAN_HOME);
 		}
 		
-		private function searchHospitalHandler():void
+		public function showWomanScreen():void
 		{
-			
+			this.dispatchEventWith(Setting.SHOW_WOMAN_HOME);
 		}
 		
-		private function askDrugsHandler():void
+		public function showSearchHospitalScreen():void
 		{
-			
+			this.dispatchEventWith(Setting.SHOW_SEARCH_HOSPITAL);
 		}
 		
-		private function examinationHandler():void
+		public function showSearchDrugsScreen():void
 		{
-			
+			this.dispatchEventWith(Setting.SHOW_SEARCH_DRUGS);
 		}
 		
-		private function toolsHandler():void
+		public function showExaminationScreen():void
 		{
-			
+			this.dispatchEventWith(Setting.SHOW_EXAMINATION);
 		}
 		
-		public function getHomeScreenRoot():DisplayObjectContainer
+		public function showToolsScreen():void
 		{
-			return this;
+			this.dispatchEventWith(Setting.SHOW_TOOLS);
 		}
+		
 	}
 }

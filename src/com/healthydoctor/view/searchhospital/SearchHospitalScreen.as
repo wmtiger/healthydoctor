@@ -1,8 +1,6 @@
-package com.healthydoctor.view.manhome
+package com.healthydoctor.view.searchhospital
 {
 	import com.healthydoctor.setting.Setting;
-	import com.wow.mgr.GameMgr;
-	import com.wow.setting.Setting;
 	
 	import ext.wm.feathers.WmPanelScreen;
 	
@@ -12,10 +10,12 @@ package com.healthydoctor.view.manhome
 	import starling.display.DisplayObject;
 	import starling.events.Event;
 	
-	public class ManHomeScreen extends WmPanelScreen
+	public class SearchHospitalScreen extends WmPanelScreen
 	{
 		private var _backBtn:Button;
-		public function ManHomeScreen()
+		private var _searchHosBar:SelectHospitalBar;
+		
+		public function SearchHospitalScreen()
 		{
 			super();
 		}
@@ -24,11 +24,14 @@ package com.healthydoctor.view.manhome
 		{
 			this.layout = new AnchorLayout();
 			initHeader();
+			
+			_searchHosBar = new SelectHospitalBar();
+			addChild(_searchHosBar);
 		}
 		
 		private function initHeader():void
 		{
-			this.headerProperties.title = "男神定制";
+			this.headerProperties.title = "寻医";
 			
 			this._backBtn = new Button();
 			this._backBtn.nameList.add(Button.ALTERNATE_NAME_BACK_BUTTON);

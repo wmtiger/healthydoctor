@@ -1,9 +1,12 @@
 package com.healthydoctor.view.home
 {
-	import starling.display.DisplayObjectContainer;
-
 	public interface IHomeScreen
 	{
-		function getHomeScreenRoot():DisplayObjectContainer;
+		function showManScreen():void;
+		function showWomanScreen():void;
+		function showSearchHospitalScreen():void;
+		function showSearchDrugsScreen():void;
+		function showExaminationScreen():void;
+		function showToolsScreen():void;
 	}
 }
