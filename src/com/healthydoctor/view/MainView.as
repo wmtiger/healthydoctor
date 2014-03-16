@@ -19,13 +19,23 @@ package com.healthydoctor.view
 	import feathers.events.FeathersEventType;
 	import feathers.motion.transitions.ScreenSlidingStackTransitionManager;
 	
+	import starling.display.DisplayObject;
 	import starling.events.Event;
 	
 	public class MainView extends Drawers
 	{
 		private var _navigator:ScreenNavigator;
 		private var _transitionManager:ScreenSlidingStackTransitionManager;
-		private var _login:LoginScreen;
+		
+		private var _loginScreen:LoginScreen;
+		private var _newFaceScreen:NewFaceScreen;
+		private var _homeScreen:HomeScreen;
+		private var _manHomeScreen:ManHomeScreen;
+		private var _womanHomeScreen:WomanHomeScreen;
+		private var _searchHospitalScreen:SearchHospitalScreen;
+		private var _searchDrugScreen:SearchDrugScreen;
+		private var _examScreen:ExaminationScreen;
+		private var _toolDrugScreen:ToolScreen;
 		
 		public function MainView()
 		{
@@ -43,7 +53,7 @@ package com.healthydoctor.view
 			this._transitionManager = new ScreenSlidingStackTransitionManager(this._navigator);
 			this._transitionManager.duration = 0.4;
 			
-			this._navigator.addScreen(Setting.LOGIN, new ScreenNavigatorItem(LoginScreen, Setting.LOGIN_EVENTS));
+			this._navigator.addScreen(Setting.LOGIN, new ScreenNavigatorItem(getLoginScreen, Setting.LOGIN_EVENTS));
 			
 			this._navigator.addScreen(Setting.NEW_FACE, new ScreenNavigatorItem(NewFaceScreen, Setting.NEW_FACE_EVENTS));
 			
@@ -67,6 +77,15 @@ package com.healthydoctor.view
 //			this._navigator.showScreen(Setting.LOGIN);
 			this._navigator.showScreen(Setting.HOME);
 //			this._navigator.showScreen(Setting.NEW_FACE);
+		}
+		
+		protected function getLoginScreen():DisplayObject
+		{
+			if(_loginScreen == null)
+			{
+				_loginScreen = new LoginScreen();
+			}
+			return _loginScreen;
 		}
 	}
 }
